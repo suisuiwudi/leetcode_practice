@@ -27,7 +27,7 @@ public class Solution {
         }
 
         sum -= root.val;
-
+//
         if (root.left == null && root.right == null) {
             if (sum == 0){
                 solution.add(root.val);
