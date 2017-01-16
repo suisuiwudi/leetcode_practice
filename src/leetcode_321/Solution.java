@@ -2,26 +2,28 @@ package leetcode_321;
 
 public class Solution {
     public String max(String a, String b){
-//    	System.out.println(a);
-//    	System.out.println(b);
         if (a.compareTo(b)>0) return a; else return b;
     }
     public String[] maxSingleArray(int[] num) {
         int n = num.length;
         if (n==0) return new String[1];
-        String f[][] = new String[n][n+1];
-        f[0][0]="";
-        f[0][1]=""+num[0];
+        String f_old[] = new String[n+1];
+        String f_new[] = new String[n+1];
+        f_old[0]="";
+        f_old[1]=""+num[0];
         for (int i=1;i<n;i++){
             for (int j=1;j<=i+1;j++){
-            	if (f[i-1][j-1]==null) f[i-1][j-1]="";
+            	if (f_old[j-1]==null) f_old[j-1]="";
             	if (i+1>j)
-            		f[i][j]=max(f[i-1][j],f[i-1][j-1]+num[i]);
+            		f_new[j]=max(f_old[j],f_old[j-1]+num[i]);
             	else 
-            		f[i][j]=f[i-1][j-1]+num[i];
-            }            
+            		f_new[j]=f_old[j-1]+num[i];
+                }        
+            for (int j=0;j<=i+1;j++)
+            	f_old[j] = f_new[j];
+            
         }
-        return f[n-1];
+        return f_old;   
     }
     public String merge(String a, String b, int klength){
     	if (a=="" || a==null) return b;
@@ -62,7 +64,7 @@ public class Solution {
         	if (i<=n && k-i<=m){
         		ans= max(ans,merge(fn[i],fm[k-i],k));
         	}
-        System.out.println(ans);
+//        System.out.println(ans);
         int int_ans[] = new int[k];
         for (int i=0; i<k; i++){
             int_ans[i]=ans.charAt(i)-48;
