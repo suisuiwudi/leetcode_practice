@@ -1,75 +1,64 @@
 package leetcode_321;
 
 public class Solution {
-    public String max(String a, String b){
-        if (a.compareTo(b)>0) return a; else return b;
+    public int[] max(int[] a, int[]b){
+    	if (a.length == 0) return b;
+    	for (int i=0; i<a.length; i++)
+    		if (a[i]>b[i]) return a;
+    		else if (a[i]<b[i]) return b;
+    	return a;
     }
-    public String[] maxSingleArray(int[] num) {
-        int n = num.length;
-        if (n==0) return new String[1];
-        String f_old[] = new String[n+1];
-        String f_new[] = new String[n+1];
-        f_old[0]="";
-        f_old[1]=""+num[0];
-        for (int i=1;i<n;i++){
-            for (int j=1;j<=i+1;j++){
-            	if (f_old[j-1]==null) f_old[j-1]="";
-            	if (i+1>j)
-            		f_new[j]=max(f_old[j],f_old[j-1]+num[i]);
-            	else 
-            		f_new[j]=f_old[j-1]+num[i];
-                }        
-            for (int j=0;j<=i+1;j++)
-            	f_old[j] = f_new[j];
-            
-        }
-        return f_old;   
-    }
-    public String merge(String a, String b, int klength){
-    	if (a=="" || a==null) return b;
-    	if (b=="" || b==null) return a;
-    	String ans = "";
+    public int[] merge(int[] a, int[] b, int klength){
+    	if (a.length==0) return b;
+    	if (b.length==0) return a;
+    	int[] ans = new int[klength];
     	int j=0, k=0;
-    	for (int i=0; i<klength && j<a.length() && k<b.length();i++) {
+    	for (int i=0; i<klength && j<a.length && k<b.length;i++) {
     		boolean chooseb = false;
-    		for (int l=0;j+l<=a.length() && k+l<=b.length();l++){
-        		if (j+l == a.length()) { chooseb=true; break; }
-        		else if (k+l == b.length()) break; 
-    			if (a.charAt(j+l)>b.charAt(k+l)){
+    		for (int l=0;j+l<=a.length && k+l<=b.length;l++){
+        		if (j+l == a.length) { chooseb=true; break; }
+        		else if (k+l == b.length) break; 
+    			if (a[j+l]>b[k+l]){
 	    			break;
-	    		}else if (a.charAt(j+l)<b.charAt(k+l)){
+	    		}else if (a[j+l]<b[k+l]){
 	    			chooseb = true;
 	    			break;    		
 	    		}
     		}
 
     		if (chooseb) 
-    			ans=ans+b.charAt(k++);
+    			ans[j+k]=b[k++];
     		else
-    			ans=ans+a.charAt(j++);
+    			ans[j+k]=a[j++];
     	}
-    	for (;j<a.length();j++) ans=ans+a.charAt(j);
-    	for (;k<b.length();k++) ans=ans+b.charAt(k);
+    	for (;j<a.length;j++) ans[j+k]=a[j];
+    	for (;k<b.length;k++) ans[j+k]=b[k];
 //    		System.out.println(a+a.charAt(1));
 
+    	return ans;
+    }
+    public int[] maxSingleArrayofK(int[] a, int k){
+    	int[] ans = new int[k];
+    	int length = 0;
+    	for (int i = 0; i < a.length; i++){
+    		while (length>0 && length+a.length-i>k && ans[length-1]<a[i]) length--;
+    		if (length<k)
+    			ans[length++]=a[i];
+    	}
     	return ans;
     }
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int n=nums1.length;
         int m=nums2.length;
-        String[] fn = maxSingleArray(nums1);
-        String[] fm = maxSingleArray(nums2);
-        String ans = "";
+        long a=System.currentTimeMillis();
+//    	System.out.println("\r<br>执行耗时 : "+(System.currentTimeMillis()-a)/1000f+" 秒 ");
+        int[] ans = new int[k];
         for (int i=0; i<=k; i++)
         	if (i<=n && k-i<=m){
-        		ans= max(ans,merge(fn[i],fm[k-i],k));
+        		ans= max(ans,merge(maxSingleArrayofK(nums1,i),maxSingleArrayofK(nums2,k-i),k));
         	}
-//        System.out.println(ans);
-        int int_ans[] = new int[k];
-        for (int i=0; i<k; i++){
-            int_ans[i]=ans.charAt(i)-48;
-//            System.out.println(int_ans[i]);
-        }
-        return int_ans;
+//        for (int i=0; i<k; i++)
+//        	System.out.println(ans[i]);       
+        return ans;
     }
 }
