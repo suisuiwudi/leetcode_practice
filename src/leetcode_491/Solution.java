@@ -23,13 +23,11 @@ public class Solution {
     public Set<List<Integer>> findSubsequence(List<Integer> list_now, int head, int[] nums){
         int n = nums.length;
         Set<List<Integer>> ans = new HashSet<List<Integer>>();
-        List<Integer> new_digit = new ArrayList<Integer>();
         for (int i = head; i < n ; i++){
             int tmp = list_now.get(list_now.size()-1);
             if (nums[i] >= tmp){
                     list_now.add(nums[i]);
                 	ans.add(new ArrayList<Integer>(list_now));
-                    new_digit.add(nums[i]);
                     ans.addAll(findSubsequence(list_now, i + 1 , nums));
                     list_now.remove(list_now.size()-1);
             }           
