@@ -14,20 +14,13 @@ public class Solution {
             List<Integer> one_num = new ArrayList<Integer>();
             one_num.add(nums[i]);
             Hash_ans.addAll(findSubsequence(one_num, i + 1, nums));
-        }      
+        }
+       
         List<List<Integer>> ans = new ArrayList<List<Integer>>(Hash_ans);
         return ans;
     }
     
-    public boolean notFindSameSubsequence(List<Integer> new_digit, int in){
-        for (int i = 0 ; i < new_digit.size();i++)
-        	if (in == new_digit.get(i)) return false;
-        return true;
-    }
-    
     public Set<List<Integer>> findSubsequence(List<Integer> list_now, int head, int[] nums){
-     
-        
         int n = nums.length;
         Set<List<Integer>> ans = new HashSet<List<Integer>>();
         List<Integer> new_digit = new ArrayList<Integer>();
