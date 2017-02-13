@@ -1,4 +1,5 @@
 package leetcode_506;
+
 import java.util.HashMap;
 import java.util.Arrays;
 public class Solution {
