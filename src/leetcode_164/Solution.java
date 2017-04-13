@@ -1,8 +1,10 @@
 package leetcode_164;
 
 import java.util.Arrays;
+import java.util.Collections;
 public class Solution {
     public int maximumGap(int[] nums) {
+    	
         int n = nums.length;
         if (n < 2) return 0;
         int max = -Integer.MAX_VALUE;
