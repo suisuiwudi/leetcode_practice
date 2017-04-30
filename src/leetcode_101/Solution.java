@@ -1,5 +1,7 @@
 package leetcode_101;
 
+import data_structure.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
