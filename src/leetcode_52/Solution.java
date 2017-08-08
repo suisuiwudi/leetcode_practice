@@ -4,7 +4,6 @@ public class Solution {
     private int ans;
     public int totalNQueens(int n) {
         ans = 0;
-        int[] process = new int[n];
         queue(n, 0, 0, 0, 0, 0);
         return ans;
     }
