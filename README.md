@@ -24,6 +24,9 @@
   342
   520
   220
+  227
+  438
+  564
   
   Problem
 You want to create a certain target string S, which consists only of lowercase English letters. You start with an empty string, and you are allowed to perform the following operations:
