@@ -2,9 +2,10 @@ package leetcode_386;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Thread;
 
 class Solution {
-    public List<Integer> lexicalOrder(int n) {
+    public List<Integer> lexicalOrder(int n) throws InterruptedException {
         int next = 1;
         List<Integer> list = new ArrayList();
         for (int i = 0; i < n; i++){
@@ -22,4 +23,5 @@ class Solution {
         }
         return list;
     }
+    
 }
