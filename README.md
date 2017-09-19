@@ -5,9 +5,6 @@
   All codes would not be accepted without any change since they were compiled in local PC and leetcode has its own compilation. Codes could be accepted after deleting the definition of packages and some imports. 
   
 # TO DO
-
-  501
-  119
   97
   599
   76
@@ -23,6 +20,11 @@
   227
   438
   564
+  468
+  453
+  637
+  623
+  652
   
   Problem
 You want to create a certain target string S, which consists only of lowercase English letters. You start with an empty string, and you are allowed to perform the following operations:
