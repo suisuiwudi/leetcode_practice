@@ -25,7 +25,8 @@
   637
   623
   652
-  
+  https://goo.gl/Q4tlea
+  https://goo.gl/qihF2v
   Problem
 You want to create a certain target string S, which consists only of lowercase English letters. You start with an empty string, and you are allowed to perform the following operations:
 Add any single lowercase letter to the end of your string.
