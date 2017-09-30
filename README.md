@@ -8,10 +8,6 @@
   30
   168
   72
-  480(be care about comparator, when integer.max - integer.min would be overflow within Integer)
-  342(the 1 bit would be only at odd position)
-  520
-  220(be care about integer overflow)
   227
   438
   564
