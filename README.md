@@ -8,7 +8,7 @@
   30
   168
   72
-  480
+  480(be care about comparator, when integer.max - integer.min would be overflow within Integer)
   342
   520
   220
